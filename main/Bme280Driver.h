@@ -19,28 +19,28 @@
 class Bme280Driver
 {
 public:
-    static constexpr auto BME280_SDA_PIN 			=		GPIO_NUM_23;
-    static constexpr auto BME280_SCL_PIN 				=	    GPIO_NUM_22;
-    static constexpr auto BME280_I2C_INSTANCE 	=		I2C_NUM_1;
+    static constexpr auto BME280_SDA_PIN             = GPIO_NUM_23;
+    static constexpr auto BME280_SCL_PIN              = GPIO_NUM_22;
+    static constexpr auto BME280_I2C_INSTANCE  = I2C_NUM_1;
 
-	enum Registers : uint8_t
-	{
-		id = 0xD0,
-		status = 0xF3,
-	};
+    enum Registers : uint8_t
+    {
+        id = 0xD0,
+        status = 0xF3,
+    };
 
-	enum Flags : uint8_t
-	{
-		status_measuring = 1 << 3,
-		status_update  = 1 << 0,
-	};
-	static constexpr uint8_t deviceId = 0x60;
+    enum Flags : uint8_t
+    {
+        status_measuring = 1 << 3,
+        status_update  = 1 << 0,
+    };
+    static constexpr uint8_t deviceId = 0x60;
 public:
-	static bool init();
-	static bme280_data measure();
+    static bool init();
+    static bme280_data measure();
 
 private:
-	static bme280_dev bme_h;
+    static bme280_dev bme_h;
     static uint8_t i2c_address;
 private:
     static bool findDevice(uint8_t address);

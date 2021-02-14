@@ -104,20 +104,20 @@ static void udp_server_task(void *pvParameters)
 
                 if (strncmp(rx_buffer, getCommand, sizeof(getCommand) - 1) == 0)
                 {
-                	auto data = Bme280Driver::measure();
-                	len = snprintf(rx_buffer, sizeof(rx_buffer),
-                			"[\"OK\", {\"temperature\":%f,\"humidity\":%f,\"pressure\":%f}]",
-							data.temperature, data.humidity, data.pressure);
+                    auto data = Bme280Driver::measure();
+                    len = snprintf(rx_buffer, sizeof(rx_buffer),
+                            "[\"OK\", {\"temperature\":%f,\"humidity\":%f,\"pressure\":%f}]",
+                            data.temperature, data.humidity, data.pressure);
                 }
                 else
                 {
-                	len = snprintf(rx_buffer, sizeof(rx_buffer), "[\"FAIL\",]");
+                    len = snprintf(rx_buffer, sizeof(rx_buffer), "[\"FAIL\",]");
                 }
-				int err = sendto(sock, rx_buffer, len, 0, (struct sockaddr *)&source_addr, sizeof(source_addr));
-				if (err < 0) {
-					ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
-					break;
-				}
+                int err = sendto(sock, rx_buffer, len, 0, (struct sockaddr *)&source_addr, sizeof(source_addr));
+                if (err < 0) {
+                    ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
+                    break;
+                }
 
             }
         }
