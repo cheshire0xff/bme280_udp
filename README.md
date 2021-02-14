@@ -31,8 +31,6 @@ There are many host-side tools which can be used to interact with the UDP/TCP se
 One command line tool is [netcat](http://netcat.sourceforge.net) which can send and receive many kinds of packets. 
 Note: please replace `192.168.0.167 3333` with desired IPV4/IPV6 address (displayed in monitor console) and port number in the following commands.
 
-In addition to those tools, simple Python scripts can be found under sockets/scripts directory. Every script is designed to interact with one of the examples.
-
 ### Send UDP packet via netcat
 ```
 echo "GET" | nc -w1 -u 192.168.0.167 3333
@@ -68,7 +66,7 @@ To configure the example to use Wi-Fi, Ethernet or both connections, open the pr
 
 When connecting using Wi-Fi, enter SSID and password of your Wi-Fi access point into the corresponding fields. If connecting to an open Wi-Fi network, keep the password field empty.
 
-When connecting using Ethernet, set up PHY type and configuration in the provided fields. If using Ethernet for the first time, it is recommended to start with the [Ethernet example readme](../ethernet/basic/README.md), which contains instructions for connecting and configuring the PHY. Once Ethernet example obtains IP address successfully, proceed to the protocols example and set the same configuration options.
+When connecting using Ethernet, set up PHY type and configuration in the provided fields. Once Ethernet example obtains IP address successfully, proceed to the protocols example and set the same configuration options.
 
 ## Build and Flash
 
